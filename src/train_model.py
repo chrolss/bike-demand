@@ -1,7 +1,7 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import joblib
-import lightgbm as lgb
+#import lightgbm as lgb
 
 
 train = joblib.load('data/processed/train.pkl')

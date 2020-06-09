@@ -22,10 +22,6 @@ def set_dateindex(_df):
 
     return _df
 
-
-df = set_dateindex(df)
-test = set_dateindex(test)
-
 # Feature engineering
 # Create dummy variables for spring, summer, fall & winter instead of int season
 def dummy_season(_df):
@@ -36,9 +32,6 @@ def dummy_season(_df):
     _df.drop(['season'], axis='columns', inplace=True)
 
     return _df
-
-df = dummy_season(df)
-test = dummy_season(test)
 
 # Create "days before free day", meaning days before either a holiday or sat - sun arrives
 
@@ -57,16 +50,19 @@ def create_day_of_week_dummies(_df):
 
     return _df
 
-df = create_day_of_week_dummies(df)
-test = create_day_of_week_dummies(test)
-
-
 
 def create_hour_of_day(_df):
     _df['hod'] = _df.index.hour
 
     return _df
 
+
+df = set_dateindex(df)
+test = set_dateindex(test)
+df = dummy_season(df)
+test = dummy_season(test)
+df = create_day_of_week_dummies(df)
+test = create_day_of_week_dummies(test)
 df = create_hour_of_day(df)
 test = create_hour_of_day(test)
 
